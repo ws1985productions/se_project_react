@@ -1,14 +1,18 @@
+
 import "./WeatherCard.css";
 import { weatherOptions, defaultWeatherOptions } from "../../utils/constants";
 //import sunny from "../../assets/sunny.png";
 
 function WeatherCard({ weatherData }) {
+  console.log(weatherData.condition);
+
   const filteredOptions = weatherOptions.filter((option) => {
     return (
       option.day === weatherData.isDay &&
       option.condition === weatherData.condition
     );
   });
+
 
   let weatherOption;
   if (filteredOptions.length === 0) {
@@ -18,6 +22,8 @@ function WeatherCard({ weatherData }) {
   }
 
   const weatherOptionUrl = weatherOption?.url;
+        console.log(weatherData.condition);
+
   //const weatherOptionCondition = filteredOptions[0]?.condition;
   //const weatherOptionDay = filteredOptions[0]?.day;
 

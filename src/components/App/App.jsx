@@ -6,6 +6,7 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
+import Footer from "../Footer/Footer";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -18,7 +19,6 @@ function App() {
   const [SelectedCard, setSelectedCard] = useState({});
 
   const handleCardClick = (card) => {
-    debugger;
     setActiveModal("preview");
     setSelectedCard(card);
   };
@@ -28,7 +28,7 @@ function App() {
   };
 
   const closeActiveModal = () => {
-    setActiveModal("");
+    setActiveModal(" ");
   };
 
   useEffect(() => {
@@ -70,7 +70,7 @@ function App() {
             placeholder="Image Url"
           />
         </label>
-        <fieldset className="modal __radio-buttons">
+        <fieldset className="modal__radio-buttons">
           <legend className="modal__legend">Select the weather type: </legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
             <input id="hot" type="radio" className="modal__radio-input" /> Hot
@@ -94,6 +94,7 @@ function App() {
         card={SelectedCard}
         onClose={closeActiveModal}
       />
+      <Footer />
     </div>
   );
 }

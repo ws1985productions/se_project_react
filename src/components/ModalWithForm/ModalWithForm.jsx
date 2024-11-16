@@ -15,7 +15,7 @@ function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
             {buttonText}
           </button>
         </form>
-      </div>   
+      </div>
     </div>
   );
 }
