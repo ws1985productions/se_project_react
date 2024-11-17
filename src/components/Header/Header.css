@@ -1,26 +1,37 @@
 .header {
     display: flex;
     align-items: center;
-    padding: 32px 0 28px;
-   }
-   .header__logo {
-    margin-right: 24px; 
-   }
-   .header__date-and-location {
+    padding: 32px 0 38px;
+}
+
+.header__logo {
+    margin-right: 24px;
+}
+
+.header__date-location {
     margin: 0;
-   }
-   
-   .header__add-clothes-btn {
-    margin: 0 20px 0 auto;
-   }
-   
-   .header__user-container {
-    /*if you want to turn a column into a row, try flex-box*/
+    font-family: "Cabinet Grotesk Bold";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.header__user-container {
     display: flex;
     align-items: center;
-    gap: 12px; /*used to create space btn items ONLY in FLEX containders - applies to the space btwn direct child elements of the container w/out affecting the sapce outside of the container*/
-   }
-   
-   .header__username {
-    margin: 0;
-   }
+    gap: 12px;
+    font-family: "Cabinet Grotesk Bold";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.header__add-clothes-btn {
+    margin: 0 20px 0 auto;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    font-family: "Cabinet Grotesk Bold";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}

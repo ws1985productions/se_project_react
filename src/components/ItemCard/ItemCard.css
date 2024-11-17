@@ -1,38 +1,27 @@
-.card{
- border-radius: 15px;
-}
 
 .card {
- width: 323px;
- position: relative;
- display: flex;
- justify-content: center;
- 
+    width: 323px;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .card__name {
- position:absolute;
- top: 15px;
- margin: 0;
- font-family: 'Cabinet Grotesk', sans-serif;
- 
-}
-
-  
-
-.cards__list {
- display: flex;
- flex-wrap: wrap;
- margin: 0;
- padding: 0;
- list-style-type: none;
- gap: 21px;
+    position: absolute;
+    top: 20px;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 2px 12px;
+    font-family: "Cabinet Grotesk Bold";
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
 }
 
 .card__image {
- width: 100%;
- border-radius: 15px;
- border:1px solid rgba(0, 0, 0, 0.3);
-
- 
+    border: solid rgba(0, 0, 0, 0.3) 1px;
+    border-radius: 19px;
+    width: 100%;
 }

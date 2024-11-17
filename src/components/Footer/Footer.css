@@ -1,14 +1,29 @@
-.footer_container {
+.footer {
     display: flex;
-    width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-  }
-  
-  .footer_copyright {
-    margin: 10;
-  }
-  
-  .footer_year {
-    margin-top: 0px;
-  }
+    width: 100%;
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
+
+.footer__content {
+    width: 1360px;
+    height: 20px;
+    margin: 85px 40px 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Cabinet Grotesk Medium";
+    font-size: 16pxpx;
+    line-height: 20px;
+    font-weight: 500; 
+}
+
+.footer__content_name {
+    margin: 0;
+}
+
+.footer__content_year {
+    margin: 0;
+}
