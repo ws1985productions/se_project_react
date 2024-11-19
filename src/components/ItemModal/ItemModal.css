@@ -1,47 +1,46 @@
-
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
 }
 
 .modal_open {
-    visibility: visible;
+  visibility: visible;
 }
 
-.modal__content_type_image { 
-    padding: 0;
+.modal__content_type_image {
+  padding: 0;
 }
 
 .modal__close_item {
-    background-image: url('../../assets/closeBtnWhite.svg');
+  background-image: url("../../assets/closeBtnWhite.svg");
 }
 
 .modal__image {
-    width: 100%;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
+  width: 100%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .modal__footer {
-    margin: 0 0 32px 32px;
-    font-family: "Cabinet Grotesk Bold";
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 700;
+  margin: 0 0 32px 32px;
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
 }
 
 .modal__caption {
-    margin: 20px 0 12px 0;
+  margin: 20px 0 12px 0;
 }
 
 .modal__weather {
-    margin: 0;
+  margin: 0;
 }

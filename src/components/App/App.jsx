@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import './App.css'
 import Header from '../Header/Header';
 import Main from '../Main/Main'
@@ -8,7 +7,6 @@ import ItemModal from '../ItemModal/ItemModal';
 import Footer from '../Footer/Footer'
 import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 import { coordinates, APIkey } from '../../utils/constants';
-
 function App() {
   const [weatherData, setWeatherData] = useState({ 
     type: "cold", 
@@ -17,23 +15,16 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("preview");
   const [selectedCard, setSelectedCard] = useState({});
-
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   }
-
-
-
   const handleAddClick = () => {
     setActiveModal("add-garment");
-
   }
-
   const closeActiveModal = () => {
     setActiveModal("");
   }
-
   useEffect(() => {
     getWeather(coordinates, APIkey)
     .then((data) => {
@@ -42,26 +33,20 @@ function App() {
     })
     .catch(console.error);
   }, []);
-
   useEffect(() => {
     if (!activeModal) return;
-
     const handleModalClose = (evt) => {
       if ((evt.target.classList.contains("modal_open") && evt.type === "click") || evt.key === "Escape") {
         closeActiveModal();
       }
     }
-
     document.addEventListener("keydown", handleModalClose);
     document.addEventListener("click", handleModalClose);
-
     return () => {
       document.removeEventListener("keydown", handleModalClose);
       document.removeEventListener("click", handleModalClose);
     }
-
   }, [activeModal]);
-
   return (
     <div className='app'>
       <div className="app__content">
@@ -102,5 +87,4 @@ function App() {
     </div>
   );
 }
-
 export default App
