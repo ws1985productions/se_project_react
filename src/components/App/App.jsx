@@ -13,7 +13,7 @@ function App() {
     temp: { F: 999 }, 
     city: "",
   });
-  const [activeModal, setActiveModal] = useState("preview");
+  const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const handleCardClick = (card) => {
     setActiveModal("preview");
