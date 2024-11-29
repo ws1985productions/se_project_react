@@ -21,7 +21,8 @@
 }
 
 .modal__title {
-  margin: 0;
+  margin-left: 28px;
+  margin-top: 28px;
   font-family: "Cabinet Grotesk Bold";
   font-size: 16px;
   line-height: 20px;
@@ -35,7 +36,7 @@
   right: 28px;
   padding: 0;
   margin: 0;
-  background-image: url("../../assets/closeBtn.svg");
+  background-image: url('../../assets/closeBtn.svg');
   border: none;
   width: 20px;
   height: 20px;
@@ -47,7 +48,6 @@
 .modal__content {
   background-color: rgba(255, 255, 255, 1);
   position: relative;
-  padding: 28px 28px 36px;
   max-width: 496px;
   width: 100%;
   box-sizing: border-box;
@@ -58,6 +58,7 @@
 .modal__form {
   display: flex;
   flex-direction: column;
+  margin: 0 28px 36px;
 }
 
 .modal__input {

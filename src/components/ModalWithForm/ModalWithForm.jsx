@@ -7,6 +7,7 @@ function ModalWithForm({
   closeActiveModal,
   handleOverlay,
   isOpen,
+  onSubmit,
 }) {
   return (
     <div onClick={handleOverlay} className={`modal ${isOpen && "modal_open"}`}>
@@ -17,7 +18,7 @@ function ModalWithForm({
           type="button"
           className="modal__close"
         />
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={onSubmit}>
           {children}
           <button className="modal__submit" type="submit">
             {buttonText}

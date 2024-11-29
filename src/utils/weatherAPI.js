@@ -8,12 +8,17 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
       return Promise.reject(`Error: ${res.status}`);
     }
   });
+
+  {const toCelsius = (temp) => {
+    const cel = Math.round((temp - 32) * 5/9);
+    return cel;
+}}
 };
 
 export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
-  result.temp = { F: data.main.temp };
+  result.temp = { F: Math.round (data.main.temp), C: toCelsius (Math.round(data.main.temp)) };
   result.type = getWeatherType(result.temp.F);
   result.condition = data.weather[0].main.toLowerCase();
   result.isDay = isDay(data.sys, Date.now());

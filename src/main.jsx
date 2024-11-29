@@ -3,8 +3,11 @@ import { createRoot } from "react-dom/client";
 import App from "./components/App/App";
 import "./index.css";
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <HashRouter>
+    <App/>
+    </HashRouter>
+  </React.StrictMode>
 );
+

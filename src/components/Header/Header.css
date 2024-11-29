@@ -24,14 +24,27 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
+    margin: 0 20px 0 auto;
 }
 
 .header__add-clothes-btn {
-    margin: 0 20px 0 auto;
     border: none;
     background-color: rgba(255, 255, 255, 1);
     font-family: "Cabinet Grotesk Bold";
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
+    padding: 0;
+}
+
+.header__link {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+}
+
+.header__username {
+    margin-right: 12px;
 }
