@@ -1,0 +1,168 @@
+
+{
+    "items": [
+      {
+        "_id": 0,
+        "name": "Beanie",
+        "weather": "cold",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2"
+      },
+      {
+        "_id": 2,
+        "name": "Cap",
+        "weather": "hot",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591"
+      },
+      {
+        "_id": 4,
+        "name": "Dress",
+        "weather": "hot",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Dress.png?etag=1f9cd32a311ab139cab43494883720bf"
+      },
+      {
+        "_id": 7,
+        "name": "Jeans",
+        "weather": "warm",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jeans.png?etag=58345e8bef1ce5f95ac882e71d309e6c"
+      },
+      {
+        "_id": 8,
+        "name": "Loafers",
+        "weather": "warm",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Loafers.png?etag=dc2d6e1ca7b297597406e35c40aef030"
+      },
+      {
+        "_id": 9,
+        "name": "Sandals",
+        "weather": "hot",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sandals.png?etag=9bea85a77c0306586d2b71a33b626d41"
+      },
+      {
+        "_id": 10,
+        "name": "Scarf",
+        "weather": "cold",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Scarf.png?etag=74efbee93810c926b5507e862c6cb76c"
+      },
+      {
+        "_id": 11,
+        "name": "Shorts",
+        "weather": "Hot",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Shorts.png?etag=d728c496643f610de8d8fea92dd915ba"
+      },
+      {
+        "_id": 12,
+        "name": "Skirt",
+        "weather": "hot",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Skirt.png?etag=27a6bea7e1b63218820d615876fa31d1"
+      },
+      {
+        "_id": 13,
+        "name": "Sneakers",
+        "weather": "warm",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f"
+      },
+      {
+        "_id": 14,
+        "name": "Sunglasses",
+        "weather": "hot",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432"
+      },
+      {
+        "_id": 15,
+        "name": "Sweatshirt",
+        "weather": "warm",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sweatshirt.png?etag=008a9674757bea2e0bdb31242e364be0"
+      },
+      {
+        "_id": 16,
+        "name": "T-Shirt",
+        "weather": "hot",
+        "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+      },
+      {
+        "name": "asdf",
+        "weather": "warm",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 17
+      },
+      {
+        "name": "dfdf",
+        "weather": "cold",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 18
+      },
+      {
+        "name": "agas",
+        "weather": "warm",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 19
+      },
+      {
+        "name": "wefvv",
+        "weather": "warm",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 20
+      },
+      {
+        "name": "asdfasdf",
+        "weather": "cold",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 21
+      },
+      {
+        "name": "dfdf",
+        "weather": "warm",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 22
+      },
+      {
+        "name": "asdf",
+        "weather": "hot",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 23
+      },
+      {
+        "name": "fdfd",
+        "weather": "hot",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 24
+      },
+      {
+        "name": "qwerr",
+        "weather": "warm",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 25
+      },
+      {
+        "name": "fwww",
+        "weather": "hot",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 26
+      },
+      {
+        "name": "asdfasdfffffffff",
+        "weather": "cold",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-happy-cone-1170x780.jpg",
+        "_id": 27
+      },
+      {
+        "name": "asdf",
+        "weather": "hot",
+        "imageUrl": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-halloween-cat-1036x780.jpg",
+        "_id": 28
+      },
+      {
+        "name": "sdfa",
+        "weather": "warm",
+        "imageUrl": "https://asdf.com",
+        "_id": 29
+      },
+      {
+        "name": "asdf",
+        "weather": "warm",
+        "imageUrl": "https://asf.com",
+        "_id": 30
+      }
+    ]
+  }
+  
