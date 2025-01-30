@@ -1,3 +1,4 @@
+import "./AddItemModal";
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
