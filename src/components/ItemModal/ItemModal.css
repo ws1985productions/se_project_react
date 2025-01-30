@@ -1,59 +1,52 @@
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-}
-
-.modal_open {
-  visibility: visible;
-}
-
-.modal__content_type_image { 
+.item-modal__content_type_image {
   padding: 0;
 }
 
-.modal__close_item {
-  background-image: url('../../assets/closeBtnWhite.svg');
-}
-
-.modal__image {
+.item-modal__image {
+  height: 100%;
   width: 100%;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
 }
 
-.modal__footer {
-  margin: 0 0 32px 32px;
-  font-family: "Cabinet Grotesk Bold";
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 700;
-  display: flex;
-}
-
-.modal__caption {
-  margin: 20px 0 12px 0;
-}
-
-.modal__weather {
+.item-modal__caption {
   margin: 0;
-}
-
-.modal__delete-btn {
-  margin: 0 32px 0 auto;
-  background: none;
-  border: none;
-  font-family: "Cabinet Grotesk Bold";
+  padding-top: 20px;
+  padding-left: 32px;
+  font-family: "Inter";
   font-size: 20px;
   line-height: 24px;
+}
+
+.item-modal__weather {
+  font-family: "Inter";
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+  padding: 20px 0px 32px 32px;
+}
+
+.item-modal__delete-btn {
+  font-family: "Inter";
+  font-size: 20px;
   font-weight: 700;
-  color: rgba(255, 77, 0, 1);
-  padding: 0;
+  line-height: 24px;
+  text-align: left;
+  color: #ff4d00;
+  background-color: white;
+  border: none;
+  padding: 20px 32px;
+}
+
+.item-modal__delete-btn:hover {
+  cursor: pointer;
+}
+
+.model__delete_hidden {
+  display: none;
+}
+
+.item-modal__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }

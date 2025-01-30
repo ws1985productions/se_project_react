@@ -1,8 +1,10 @@
-What to wear? - WTWR
-
+React + Vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This project is the first of many that will use React. A blend of HTML, CSS, JS, including native and remote API calls. This particular API used in the project is OpenWeather API. This API returns quite a lot of information but this project only used the current temperature and weather condition based on what the user's location is.
+Backend Repository
+
+You can find the backend code for this project in the following repository: https://github.com/ws1985productions/se_project_react
+
 
 Currently, two official plugins are available:
 

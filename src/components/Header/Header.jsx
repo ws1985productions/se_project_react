@@ -1,36 +1,69 @@
-import "./Header.css";
-import logo from "../../assets/logo.png";
-import avatar from "../../assets/avatar.svg";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import "./Header.css";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import logo from "../../assets/logo.png";
+import avatarPlaceholder from "../../assets/avatar.png";
 
-function Header({ handleAddClick, weatherData }) {
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "numeric",
-  });
+function Header({
+  weatherData,
+  isLoggedIn,
+  handleRegisterClick,
+  handleLoginClick,
+  handleSignOut,
+  handleAddClick, // Added handleAddClick as a prop
+}) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <header className="header">
-      <Link to="/">
-        <img className="header__logo" src={logo} alt="WTWR logo" />
-      </Link>
-      <p className="header__date-location">
-        {currentDate}, {weatherData.city}
-      </p>
-
-      <div className="header__user-container">
-        <ToggleSwitch />
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          + Add clothes
-        </button>
-        <Link to="/profile" className="header__link">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+      <div className="header__logo-and-date">
+        <Link to="/">
+          <img className="header__logo" src={logo} alt="Logo" />
         </Link>
+        <p className="header__date-and-location">
+          {new Date().toLocaleString("default", {
+            month: "long",
+            day: "numeric",
+          })}
+          , {weatherData.city || "Unknown"}
+        </p>
+      </div>
+      <div className="header__temp-and-user">
+        <ToggleSwitch />
+        {!isLoggedIn ? (
+          <>
+            <button className="header__register" onClick={handleRegisterClick}>
+              Sign Up
+            </button>
+            <button className="header__login" onClick={handleLoginClick}>
+              Log In
+            </button>
+          </>
+        ) : (
+          <button className="header__logout" onClick={handleSignOut}>
+            Log Out
+          </button>
+        )}
+        <div className="header__user-container">
+          <Link to="/profile" className="header__link">
+            <p className="header__user-name">{currentUser?.name || "Guest"}</p>
+          </Link>
+          <img
+            className="header__user-avatar"
+            src={currentUser?.avatar || avatarPlaceholder}
+            alt="User Avatar"
+          />
+        </div>
+        {isLoggedIn && (
+          <button
+            className="header__add-item"
+            onClick={handleAddClick} // Corrected how handleAddClick is called
+          >
+            + Add Clothes
+          </button>
+        )}
       </div>
     </header>
   );

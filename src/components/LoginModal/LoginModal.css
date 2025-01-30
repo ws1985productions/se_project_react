@@ -1,0 +1,35 @@
+.login-modal__button-container {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .login-modal__submit {
+    width: 73px;
+    height: 36px;
+    background-color: #000;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin-top: 32px;
+    padding: 0;
+  }
+  
+  .login-modal__submit_disabled {
+    opacity: 30%;
+    pointer-events: none;
+  }
+  
+  .login-modal__link {
+    margin-top: 40px;
+    font-family: "Inter";
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+    opacity: 30%;
+  }
+  
+  .login-modal__link_disabled {
+    opacity: 30%;
+    pointer-events: none;
+  }

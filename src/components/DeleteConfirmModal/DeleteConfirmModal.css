@@ -1,0 +1,47 @@
+.delete-modal__content {
+    display: flex;
+    max-width: 670px;
+    max-height: 280px;
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 152px 60px 151px;
+    margin: 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 20px;
+    position: relative;
+  }
+  .delete-modal__heading {
+    margin: 0 0 40px 0;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+  }
+  .delete-modal__confirm {
+    width: fit-content;
+    align-self: center;
+    background-color: transparent;
+    border: none;
+    margin: 0 0 24px 0;
+    padding: 0;
+    color: #ff4d00;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .delete-modal__cancel {
+    width: fit-content;
+    align-self: center;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+  }
