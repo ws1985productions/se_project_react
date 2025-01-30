@@ -4,7 +4,8 @@
   flex-direction: row;
 }
 
-.profile__sidebar {
+.profile__sidebar { 
+  width: 1016px;
 }
 
 .profile__clothing-items {

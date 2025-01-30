@@ -9,7 +9,7 @@ import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
-
+import { items } from "../../../db.json";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
