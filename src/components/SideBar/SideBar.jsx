@@ -1,34 +1,39 @@
 import "./SideBar.css";
+import avatar from "../../assets/avatar.svg";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import avatarPlaceholder from "../../assets/avatar.png";
 
-function SideBar({ handleEditProfileClick, onLogout }) {
+function SideBar({ openSignOutModal, openProfileEditModal }) {
   const currentUser = useContext(CurrentUserContext);
-
+  const getInitials = (name) => (name ? name.charAt(0).toUpperCase() : "");
   return (
-    <div className="side-bar">
-      <div className="side-bar__avatar-container">
-        <img
-          src={currentUser?.avatar || avatarPlaceholder}
-          alt={currentUser?.name || "User Avatar"}
-          className="side-bar__avatar"
-        />
-        <p className="side-bar__username">
-          {currentUser?.name || "Guest User"}
-        </p>
+    <div className="sidebar">
+      <div className="sidebar__user-info">
+        {currentUser?.avatar ? (
+          <img
+            src={currentUser.avatar}
+            alt={currentUser?.name || "Guest"}
+            className="sidebar__avatar"
+          />
+        ) : (
+          <div className="sidebar__avatar-placeholder">
+            {getInitials(currentUser?.name || "Guest")}
+          </div>
+        )}
+        <p className="sidebar__username">{currentUser?.name}</p>
       </div>
-      <div className="side-bar__buttons">
-        <button
-          className="side-bar__edit-button"
-          onClick={handleEditProfileClick}
-        >
-          Change Profile Data
-        </button>
-        <button className="side-bar__logout-button" onClick={onLogout}>
-          Log Out
-        </button>
-      </div>
+      <button
+        className="sidebar__button sidebar__button-edit"
+        onClick={openProfileEditModal}
+      >
+        Change profile data
+      </button>
+      <button
+        className="sidebar__button sidebar__button-logout"
+        onClick={openSignOutModal}
+      >
+        Logout
+      </button>
     </div>
   );
 }

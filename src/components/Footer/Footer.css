@@ -1,8 +1,18 @@
-.footer__container {
-    display: flex;
-    justify-content: space-between;
-    font-family: "Inter";
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-  }
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding-top: 85px;
+}
+
+.footer__name {
+  margin: 0;
+  font-family: "Cabinet Grotesk Medium";
+  margin-left: 40px;
+}
+
+.footer__year {
+  margin: 0;
+  font-family: "Cabinet Grotesk Medium";
+  margin-right: 40px;
+}

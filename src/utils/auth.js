@@ -1,58 +1,51 @@
-const baseUrl =
-  (typeof process !== "undefined" &&
-    process.env &&
-    process.env.REACT_APP_BASE_URL) ||
-  "http://localhost:3001";
+import { checkRes } from "./api";
 
-export async function signUserIn(data) {
-  const res = await fetch(`${baseUrl}/signin`, {
+const BASE_URL = "http://localhost:3001"; // Replace with your backend URL if different
+
+// Function to handle user registration
+export const signup = ({ name, avatar, email, password }) => {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
-  });
-
-  const result = await res.json();
-  if (!res.ok) {
-    throw new Error(result.message || "Error during sign in");
-  }
-
-  return result;
-}
-
-export async function signUserUp(data) {
-  const res = await fetch(`${baseUrl}/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  const result = await res.json();
-  if (!res.ok) {
-    throw new Error(result.message || "Error during sign up");
-  }
-
-  return result;
-}
-
-export async function fetchUserData(token) {
-  try {
-    const response = await fetch(`${baseUrl}/users/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
+    body: JSON.stringify({ name, avatar, email, password }),
+  })
+    .then(checkRes)
+    .catch((error) => {
+      console.error("Error in signup:", error);
+      throw error;
     });
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.message || "Error fetching user data");
-    }
-    return data;
-  } catch (error) {
-    console.error("Error fetching user data:", error);
-    throw error;
-  }
-}
+};
+
+// Function to handle user login
+export const signin = ({ email, password }) => {
+  return fetch(`${BASE_URL}/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then(checkRes)
+    .catch((error) => {
+      console.error("Error in signin:", error);
+      throw error;
+    });
+};
+
+// Function to validate token
+export const checkToken = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  })
+    .then(checkRes)
+    .catch((error) => {
+      console.error("Error validating token:", error);
+      throw error;
+    });
+};

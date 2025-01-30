@@ -1,9 +1,10 @@
+/* General Modal Styles */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
@@ -15,137 +16,140 @@
   visibility: visible;
 }
 
+/* Modal Content */
 .modal__content {
-  background-color: #fff;
   position: relative;
-  padding: 28px 28px 36px;
-  max-width: 496px;
-  box-sizing: border-box;
   width: 100%;
+  max-width: 496px;
+  padding: 28px 28px 36px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
+  box-sizing: border-box;
 }
 
+/* Modal Title */
 .modal__title {
-  margin: 0;
-  font-size: 16px;
-  padding-bottom: 24px;
-  font-family: "Inter";
+  margin: 0 0 24px;
+  font-family: "Cabinet Grotesk Bold";
   font-size: 16px;
   font-weight: 700;
+  line-height: 20px;
 }
 
+/* Close Button */
 .modal__close {
   position: absolute;
   top: 20px;
   right: 28px;
-  padding: 0;
-  height: 20px;
   width: 20px;
-  border: none;
-  background-image: url("../../assets/CloseButton.png");
-  background-color: transparent;
+  height: 20px;
+  background-color: black;
+  background-image: url(../../assets/form-modal-close.svg);
   background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.modal__close:hover {
+  background-size: cover;
+  border: none;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
 }
 
+/* Submit Button */
+.modal__submit {
+  width: 124px;
+  height: 36px;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal__submit:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__submit-button {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  border: 1px solid white;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 8px 13px;
+  align-self: flex-start;
+}
+
+/* Forms and Inputs */
 .modal__form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 700;
 }
 
 .modal__input {
-  display: block;
   width: 100%;
-  border-radius: 1px;
-  border-top: #fff;
-  border-right: #fff;
-  border-left: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0);
+  margin: 8px 0 4px;
   padding: 0;
-  padding-top: 8px;
+  color: rgba(0, 0, 0, 0.5);
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+  outline: none;
+  display: block;
+}
+
+.modal__fieldset {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 32px;
+  padding: 0;
+  border: none;
 }
 
 .modal__radio-buttons {
   display: flex;
   flex-direction: column;
-  border: none;
+  margin-bottom: 32px;
   padding: 0;
-  align-items: flex-start;
-  margin: 0;
-  color: #000;
-  accent-color: #000;
+  border: none;
 }
 
-.modal__legend {
-  padding-bottom: 12px;
-  padding-top: 24px;
-}
-
-.modal__label:last-of-type {
-  padding-top: 24px;
-}
-
-.modal__radio-input {
-  margin-right: 5px;
+/* Labels */
+.modal__label {
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 24px;
 }
 
 .modal__label_type_radio {
-  padding-bottom: 8px;
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
 }
 
-.modal__label_type_radio:last-of-type {
-  padding-bottom: 0px;
+.modal__label_type_radio:last-child {
+  margin: 0;
 }
 
-.modal__submit {
-  width: 124px;
-  height: 36px;
-  background-color: #000;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  margin: 32px 0 0 0;
-  padding: 0;
-  cursor: pointer;
+.modal__radio-input {
+  margin-right: 8px;
 }
 
-.modal__submit:hover {
-  cursor: pointer;
+.modal__radio-input:checked ~ span {
+  color: rgba(0, 0, 0, 1);
 }
 
-.modal__submit:disabled {
-  background-color: rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-}
-
-.modal__text-button {
-  padding: 0 16px;
-  height: 36px;
-  border-style: none;
-  font-weight: 700;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.modal__el_hovered:hover {
-  opacity: 60%;
-  cursor: pointer;
-}
-
-.modal__input-error {
-  color: red;
-  display: none;
-}
-
-.modal__input-error_visible {
-  display: block;
+/* Legend */
+.modal__legend {
+  margin-bottom: 12px;
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 16px;
+  line-height: 20px;
 }

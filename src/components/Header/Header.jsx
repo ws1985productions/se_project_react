@@ -1,68 +1,102 @@
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import "./Header.css";
+import logo from "../../assets/Logo.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import logo from "../../assets/logo.png";
-import avatarPlaceholder from "../../assets/avatar.png";
 
-function Header({
-  weatherData,
-  isLoggedIn,
-  handleRegisterClick,
-  handleLoginClick,
-  handleSignOut,
-  handleAddClick, // Added handleAddClick as a prop
-}) {
+function Header({ handleAddClick, setActiveModal, weatherData }) {
+  // Access the current user context
   const currentUser = useContext(CurrentUserContext);
+  console.log("Header Props:", { handleAddClick, setActiveModal, weatherData });
+
+  // Handlers for login and signup modals
+  const openLoginModal = () => {
+    console.log("Opening Login Modal");
+    setActiveModal("login");
+  };
+
+  const openSignupModal = () => {
+    console.log("Opening Signup Modal");
+    setActiveModal("sign-up");
+  };
+
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
+
+  // Function to get initials of user's name
+  const getInitials = (name) => (name ? name.charAt(0).toUpperCase() : "");
 
   return (
     <header className="header">
-      <div className="header__logo-and-date">
+      <div className="header__container">
+        {/* Logo */}
         <Link to="/">
-          <img className="header__logo" src={logo} alt="Logo" />
+          <img className="header__logo" src={logo} alt="WTWR Logo" />
         </Link>
+
+        {/* Date and location */}
         <p className="header__date-and-location">
-          {new Date().toLocaleString("default", {
-            month: "long",
-            day: "numeric",
-          })}
-          , {weatherData.city || "Unknown"}
+          {currentDate}, {weatherData?.city || "Unknown Location"}
         </p>
       </div>
-      <div className="header__temp-and-user">
-        <ToggleSwitch />
-        {!isLoggedIn ? (
-          <>
-            <button className="header__register" onClick={handleRegisterClick}>
-              Sign Up
+
+      {/* Toggle switch */}
+      <div className="header__container-bar">
+        <div className="header__switch">
+          <ToggleSwitch />
+        </div>
+
+        {/* Conditional rendering based on login state */}
+        {currentUser ? (
+          // Logged-In State
+          <div className="header__user">
+            <button
+              onClick={handleAddClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              + Add clothes
             </button>
-            <button className="header__login" onClick={handleLoginClick}>
+            <Link to="/profile" className="header__link">
+              <div className="header__user-container">
+                <p className="header__user-name">
+                  {currentUser?.name || "Guest"}
+                </p>
+                {currentUser?.avatar ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser?.name || "Guest"}
+                    className="header__avatar"
+                  />
+                ) : (
+                  <div className="header__avatar-placeholder">
+                    {getInitials(currentUser?.name || "Guest")}
+                  </div>
+                )}
+              </div>
+            </Link>
+          </div>
+        ) : (
+          // Logged-Out State
+          <div className="header__auth">
+            <button
+              onClick={openLoginModal}
+              type="button"
+              className="header__auth-btn"
+            >
               Log In
             </button>
-          </>
-        ) : (
-          <button className="header__logout" onClick={handleSignOut}>
-            Log Out
-          </button>
-        )}
-        <div className="header__user-container">
-          <Link to="/profile" className="header__link">
-            <p className="header__user-name">{currentUser?.name || "Guest"}</p>
-          </Link>
-          <img
-            className="header__user-avatar"
-            src={currentUser?.avatar || avatarPlaceholder}
-            alt="User Avatar"
-          />
-        </div>
-        {isLoggedIn && (
-          <button
-            className="header__add-item"
-            onClick={handleAddClick} // Corrected how handleAddClick is called
-          >
-            + Add Clothes
-          </button>
+            <button
+              onClick={openSignupModal}
+              type="button"
+              className="header__auth-btn"
+            >
+              Sign Up
+            </button>
+          </div>
         )}
       </div>
     </header>

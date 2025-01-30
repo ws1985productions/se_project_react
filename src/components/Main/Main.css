@@ -1,29 +1,20 @@
-.cards__text {
-  font-weight: 700;
-  font-family: "Inter";
-  font-size: 20px;
-  margin: 40px 0 35px;
+.main__container {
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .cards__list {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  gap: 19px;
-  list-style-type: none;
-  margin-top: 35px;
+  margin: 0;
   padding: 0;
+  list-style-type: none;
+  gap: 21px;
 }
 
-@media screen and (max-width: 600px) {
-  .cards__text {
-    display: flex;
-    margin: 0;
-    justify-content: center;
-    font-size: 16px;
-  }
-
-  .cards__list {
-    justify-content: center;
-  }
+.cards__text {
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
 }

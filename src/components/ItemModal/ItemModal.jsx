@@ -1,37 +1,46 @@
-
 import "./ItemModal.css";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function ItemModal({ activeModal, card, onClose, handleDeleteClick }) {
+function ItemModal({ activeModal, onClose, card, handleDeleteClick }) {
+  // Subscribe to the CurrentUserContext
   const currentUser = useContext(CurrentUserContext);
+
+  // Check if the current user owns the selected card
+  const isOwn = card?.owner === currentUser?._id;
+
+  // Conditional className for delete button
+  const itemDeleteButtonClassName = `modal__delete ${
+    isOwn ? "" : "modal__delete_hidden"
+  }`;
 
   return (
     <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
-      <div className="modal__content item-modal__content_type_image">
+      <div className="modal__content modal__content_type_image">
         <button
-          className="modal__close"
-          type="button"
           onClick={onClose}
+          type="button"
+          className="modal__close"
         ></button>
         <img
-          src={card?.imageUrl}
-          alt={card?.name}
-          className="item-modal__image"
+          src={card?.imageUrl || ""}
+          alt={card?.name || "Card"}
+          className="modal__image"
         />
-        <div className="item-modal__footer">
-          <div className="item-modal__footer-text">
-            <h2 className="item-modal__caption">{card?.name}</h2>
-            <p className="item-modal__weather">Weather: {card?.weather}</p>
+        <div className="modal__footer">
+          <div className="modal__description">
+            <h2 className="modal__caption">{card?.name || "No Name"}</h2>
+            <p className="modal__weather">
+              Weather: {card?.weather || "Unknown"}
+            </p>
           </div>
-
-          {card?.owner === currentUser?._id && (
+          {isOwn && ( // Conditionally render the delete button
             <button
               type="button"
-              className="item-modal__delete-btn"
-              onClick={handleDeleteClick}
+              className={itemDeleteButtonClassName}
+              onClick={() => handleDeleteClick(card)}
             >
-              Delete Item
+              Delete item
             </button>
           )}
         </div>

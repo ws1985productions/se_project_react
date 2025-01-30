@@ -1,50 +1,41 @@
-.clothes-section__text-container {
-    display: flex;
-    gap: 16px;
-    font-family: "CabinetGrotesk-Medium";
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24.8px;
-    text-align: left;
-    color: black;
-    margin-top: 20px;
-  }
-  
-  .clothes-section__your-items {
-    margin: 0;
-  }
-  
-  .clothes-section__add-btn {
-    border: none;
-    opacity: 0.6;
-  }
-  
-  .clothes-section__add-btn:hover {
-    cursor: pointer;
-  }
-  
-  .clothes-section__cards-list {
-    margin: 0;
-    margin-top: 16px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 19px;
-    list-style-type: none;
-    margin-top: 35px;
-    padding: 0;
-  }
-  
-  @media screen and (max-width: 600px) {
-    .clothes {
-      width: 100%;
-    }
-  
-    .clothes-section__text-container {
-      padding-bottom: 16px;
-    }
-  
-    .clothes-section__cards-list {
-      justify-content: center;
-    }
-  }
+.clothes-section__title-button {
+  all: unset;
+  display: flex;
+  flex-direction: row; /* Align children in a row */
+  align-items: center; /* Vertically align items */
+  justify-content: flex-start;
+  gap: 20px; /* Add spacing between the header and button */
+  margin-bottom: 16px;
+}
+
+.clothes-section__header {
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  font-weight: 700;
+  width: 94px;
+  height: 25px;
+  color: rgba(0, 0, 0, 1);
+  margin: 0;
+}
+
+.clothes-section__button {
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  font-weight: 700;
+  width: 88px;
+  height: 25px;
+  color: rgba(0, 0, 0, 0.6);
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 20px;
+}
+
+.clothes-section__items {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 21px;
+}

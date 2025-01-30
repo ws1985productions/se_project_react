@@ -1,83 +1,89 @@
+
 const baseUrl = "http://localhost:3000";
 
-const getAuthHeaders = () => {
-  const token = localStorage.getItem("jwt"); // Ensure token key matches the rest of the app
+// Helper function to handle response
+export const checkRes = (res) => {
+  if (!res.ok) {
+    return res.json().then((data) => {
+      throw new Error(data.message || `Error: ${res.status}`);
+    });
+  }
+  return res.json();
+};
+
+// Helper function to include token in headers
+function getHeadersWithAuth(token) {
   return {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`, // Fixed template literal syntax
+    Authorization: `Bearer ${token}`,
   };
-};
+}
 
-export const getServerItems = () => {
-  return fetch(`${baseUrl}/items`, {
-    headers: getAuthHeaders(),
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`); // Corrected error template
-    }
-    return res.json();
-  });
-};
+// Fetch clothing items (unprotected)
+function getItems(weatherType) {
+  const query = weatherType ? `?weather_like=${weatherType}` : "";
+  return fetch(`${baseUrl}/items${query}`).then(checkRes);
+}
 
-export const addServerItem = (item) => {
+// Add a new clothing item (protected)
+function postItem(item, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: getAuthHeaders(),
-    body: JSON.stringify(item),
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-    return res.json();
-  });
-};
-
-export const deleteServerItem = (id) => {
-  return fetch(`${baseUrl}/items/${id}`, {
-    method: "DELETE",
-    headers: getAuthHeaders(),
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-    return { message: "Item deleted", id };
-  });
-};
-
-export const toggleLike = (id, isLiked, userId) => {
-  return getServerItems().then((items) => {
-    const item = items.find((item) => item.id === id || item._id === id);
-    if (!item) {
-      return Promise.reject("Item not found");
-    }
-
-    const updatedLikes = isLiked
-      ? (item.likes || []).filter((likeId) => likeId !== userId)
-      : [...(item.likes || []), userId];
-
-    return fetch(`${baseUrl}/items/${item._id || item.id}`, {
-      method: "PUT",
-      headers: getAuthHeaders(),
-      body: JSON.stringify({ ...item, likes: updatedLikes }),
-    }).then((res) => {
-      if (!res.ok) {
-        return Promise.reject(`Error: ${res.status}`);
-      }
-      return res.json();
-    });
-  });
-};
-
-export const fetchUserData = (token) => {
-  return fetch(`${baseUrl}/users/me`, {
     headers: {
-      Authorization: `Bearer ${token}`, // Fixed template literal syntax
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Ensure token is included
     },
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-    return res.json();
-  });
+    body: JSON.stringify(item),
+  }).then(checkRes);
+}
+
+// Delete a clothing item (protected)
+function deleteItem(itemId, token) {
+  console.log(`Deleting item with _id: ${itemId}`); // Debug log
+  return fetch(`${baseUrl}/items/${itemId}`, {
+    method: "DELETE",
+    headers: getHeadersWithAuth(token),
+  }).then(checkRes);
+}
+
+// Fetch user data (protected)
+function getUserData(token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: getHeadersWithAuth(token),
+  }).then(checkRes);
+}
+
+// Update user profile (protected)
+export const updateUser = (userData, token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: getHeadersWithAuth(token),
+    body: JSON.stringify(userData),
+  }).then(checkRes);
 };
+
+// Add a like to an item
+export const addCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkRes);
+};
+
+// Remove a like from an item
+export const removeCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkRes);
+};
+
+// Export all other functions
+export { getItems, postItem, deleteItem, getUserData };

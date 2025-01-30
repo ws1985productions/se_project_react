@@ -6,14 +6,7 @@
   overflow: hidden;
 }
 
-.weather-card__image {
-  width: 100%;
-  object-fit: cover;
-  object-position: right top;
-}
-
 .weather-card__temp {
-  color: rgba(255, 255, 255, 1);
   font-family: "Cabinet Grotesk Bold";
   font-size: 36px;
   font-weight: 700;
@@ -22,4 +15,11 @@
   position: absolute;
   top: 20px;
   left: 16px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.weather-card__image {
+  object-fit: cover;
+  object-position: right top;
+  width: 100%;
 }

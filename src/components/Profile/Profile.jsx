@@ -1,29 +1,31 @@
 import "./Profile.css";
-import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
+import SideBar from "../SideBar/SideBar";
 
 function Profile({
-  handleEditProfileClick,
-  onCardClick,
-  items,
+  handleCardClick,
+  clothingItems,
+  handleDeleteItem,
   handleAddClick,
-  handleLogout,
-  onCardLike,
+  handleSignOut,
+  handleEditProfileClick,
+  handleCardLike,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
         <SideBar
-          handleEditProfileClick={handleEditProfileClick}
-          onLogout={handleLogout}
+          openSignOutModal={handleSignOut}
+          openProfileEditModal={handleEditProfileClick}
         />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection
-          items={items}
-          handler={onCardClick}
-          onClick={handleAddClick}
-          onCardLike={onCardLike}
+          handleCardClick={handleCardClick}
+          clothingItems={clothingItems}
+          handleDeleteItem={handleDeleteItem}
+          handleAddClick={handleAddClick}
+          handleCardLike={handleCardLike}
         />
       </section>
     </div>
