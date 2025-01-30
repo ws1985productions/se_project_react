@@ -3,7 +3,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Backend Repository
 
-You can find the backend code for this project in the following repository: https://github.com/ws1985productions/se_project_react
+You can find the backend code for this project in the following repository: https://github.com/ws1985productions/se_project_express
 
 
 Currently, two official plugins are available:
