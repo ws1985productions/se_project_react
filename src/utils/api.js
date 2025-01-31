@@ -1,5 +1,5 @@
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://localhost:3001";
 
 // Helper function to handle response
 export const checkRes = (res) => {
