@@ -1,41 +1,42 @@
-import "./SideBar.css";
-import avatar from "../../assets/avatar.svg";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import avatarPlaceholder from "../../assets/avatar.svg";
+import "./SideBar.css";
+import Avatar from "../Avatar/Avatar";
 
-function SideBar({ openSignOutModal, openProfileEditModal }) {
-  const currentUser = useContext(CurrentUserContext);
-  const getInitials = (name) => (name ? name.charAt(0).toUpperCase() : "");
+const SideBar = ({ handleLogOut, changeCurrentUserData }) => {
+  const { currentUser } = useContext(CurrentUserContext);
+
+  const avatar = currentUser?.avatar || avatarPlaceholder;
+  const username = currentUser?.name || "User";
+
   return (
-    <div className="sidebar">
-      <div className="sidebar__user-info">
-        {currentUser?.avatar ? (
-          <img
-            src={currentUser.avatar}
-            alt={currentUser?.name || "Guest"}
-            className="sidebar__avatar"
-          />
-        ) : (
-          <div className="sidebar__avatar-placeholder">
-            {getInitials(currentUser?.name || "Guest")}
-          </div>
-        )}
-        <p className="sidebar__username">{currentUser?.name}</p>
+    <div className="sideBar">
+      <div className="sideBar__userInfo">
+        <Avatar
+          avatar={currentUser?.avatar}
+          name={currentUser?.name || "User"}
+        />
+        <p className="sideBar__userName">{username || "User Avatar"}</p>
       </div>
-      <button
-        className="sidebar__button sidebar__button-edit"
-        onClick={openProfileEditModal}
-      >
-        Change profile data
-      </button>
-      <button
-        className="sidebar__button sidebar__button-logout"
-        onClick={openSignOutModal}
-      >
-        Logout
-      </button>
+      <div className="sideBar__editProfile">
+        <button
+          className="sideBar__changeUserData"
+          onClick={changeCurrentUserData}
+          type="button"
+        >
+          Change Profile Data
+        </button>
+        <button
+          className="sideBar__logout"
+          onClick={handleLogOut}
+          type="button"
+        >
+          Log Out
+        </button>
+      </div>
     </div>
   );
-}
+};
 
 export default SideBar;

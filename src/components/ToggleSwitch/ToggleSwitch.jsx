@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import "./ToggleSwitch.css";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { useState } from "react";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 const ToggleSwitch = () => {
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext
   );
-
+  console.log(currentTemperatureUnit);
   return (
     <label className="switch">
       <input
         type="checkbox"
         className="switch__box"
-        checked={currentTemperatureUnit === "C"} // Checked when in Celsius
         onChange={handleToggleSwitchChange}
       />
       <span
@@ -23,18 +23,18 @@ const ToggleSwitch = () => {
         }
       ></span>
       <p
-        className={`switch__temp-F ${
-          currentTemperatureUnit === "F" ? "switch__active" : ""
-        }`}
-      >
-        F
-      </p>
-      <p
         className={`switch__temp-C ${
-          currentTemperatureUnit === "C" ? "switch__active" : ""
+          currentTemperatureUnit === "C" && "switch__active"
         }`}
       >
         C
+      </p>
+      <p
+        className={`switch__temp-F ${
+          currentTemperatureUnit === "F" && "switch__active"
+        }`}
+      >
+        F
       </p>
     </label>
   );

@@ -1,40 +1,56 @@
+import { weatherOptions } from "../../utils/constants";
 import "./WeatherCard.css";
-import { useContext } from "react";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { defaultWeatherOptions, weatherOptions } from "../../utils/constants";
 
-function WeatherCard({ weatherData }) {
-  // Subscribe to the temperature unit context
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
-  // Filter the weather options
+function WeatherCard({
+  weatherData,
+  defaultWeatherOptions,
+  currentTemperatureUnit,
+}) {
+  console.log("Current WeatherData:", weatherData);
+  console.log("WeatherCard Props:", weatherData, defaultWeatherOptions);
   const filteredOptions = weatherOptions.filter((option) => {
+    console.log(
+      `Checking Option - Day: ${option.day}, Condition: ${option.condition}`
+    );
     return (
-      option.day === weatherData.isDay &&
-      option.condition === weatherData.condition
+      option.day === weatherData?.isDay &&
+      option.condition === weatherData?.condition
     );
   });
 
-  // Determine which weather option to display
+  console.log("Weather Data:", weatherData);
+  console.log("Weather Options:", weatherOptions);
+  console.log("Filtered Options Result:", filteredOptions);
+
   let weatherOption;
   if (filteredOptions.length === 0) {
-    weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
+    weatherOption = defaultWeatherOptions[weatherData?.isDay ? "day" : "night"];
   } else {
     weatherOption = filteredOptions[0];
   }
 
+  const temperature =
+    currentTemperatureUnit === "F"
+      ? weatherData?.temp?.F
+      : weatherData?.temp?.C;
+  console.log(weatherOptions[2].url);
+  console.log("Selected weatherOption:", weatherOption);
+  console.log("Image URL:", weatherOption?.url);
   return (
+    
     <section className="weather-card">
       <p className="weather-card__temp">
-        {weatherData.temp[currentTemperatureUnit]} &deg;{" "}
-        {currentTemperatureUnit}
+        {" "}
+        {temperature} {currentTemperatureUnit}{" "}
       </p>
       <img
-        src={weatherOption?.url}
-        alt={`Card showing ${weatherOption?.day ? "day" : "night"}time ${
+        className={`weather-card__image ${
+          weatherOption?.condition || "default-condition"
+        }`}
+        src={weatherOption?.url || "default-image-path"}
+        alt={`Card showing ${weatherOption?.day ? "day" : "night"} time ${
           weatherOption?.condition
         } weather`}
-        className="weather-card__image"
       />
     </section>
   );

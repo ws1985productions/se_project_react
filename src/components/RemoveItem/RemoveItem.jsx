@@ -1,4 +1,4 @@
-import "../RemoveItem/RemoveItem";
+import "./RemoveItem.css";
 import close from "../../assets/closeBtn.svg";
 import useEscapeKey from "../../hooks/useEscapeKey";
 import { useRef } from "react";

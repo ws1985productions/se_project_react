@@ -1,54 +1,45 @@
 import "./Main.css";
-import { useContext } from "react";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
+import { defaultWeatherOptions } from "../../utils/constants";
+import { useContext } from "react";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherData, clothingItems, handleCardClick, handleCardLike }) {
+function Main({ clothingItems, weatherData, handleCardClick, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
-  // Debugging: Log weatherData.type and clothing items
-  console.log("Weather Data Type:", weatherData.type);
-  console.log("Clothing Items:", clothingItems);
-
-  // Filter items based on weather type
-  const filteredItems = clothingItems.filter((item) => {
-    console.log(
-      `Filtering item: ${item.name}, item.weather: ${item.weather}, weatherData.type: ${weatherData.type}`
-    );
-    return (
-      item.weather &&
-      item.weather.toLowerCase() === weatherData.type.toLowerCase()
-    );
-  });
-
-  // Debugging: Log the result of filtering
-  console.log("Filtered clothing items:", filteredItems);
-
-  // Debugging: Log the filtered items
-  console.log("Filtered Items:", filteredItems);
-
+  console.log(currentTemperatureUnit);
+  console.log("Weather data in Main:", weatherData);
+  const filteredItems = clothingItems.filter(
+    (item) => item?.weather === weatherData.type
+  );
   return (
-    <main>
-      <div className="main__container">
-        <WeatherCard weatherData={weatherData} />
-        <section className="cards">
-          <p className="cards__text">
-            Today is {weatherData.temp[currentTemperatureUnit]} &deg;{" "}
-            {currentTemperatureUnit}. You may want to wear:
-          </p>
-          <ul className="cards__list">
-            {filteredItems.map((item) => (
+    <main className="main">
+      <WeatherCard
+        weatherData={weatherData}
+        defaultWeatherOptions={defaultWeatherOptions}
+        currentTemperatureUnit={currentTemperatureUnit}
+      />
+      <section className="cards">
+        <p className="cards__text">
+          Today is {weatherData.temp[currentTemperatureUnit]}{" "}
+          {currentTemperatureUnit} / You may want to wear:
+        </p>
+
+        <ul className="cards__list">
+          {filteredItems.length > 0 ? (
+            filteredItems.map((item) => (
               <ItemCard
                 key={item._id}
                 item={item}
                 onCardClick={handleCardClick}
-                onCardLike={handleCardLike} // Pass the like handler to ItemCard
+                onCardLike={onCardLike}
               />
-            ))}
-          </ul>
-        </section>
-      </div>
+            ))
+          ) : (
+            <p>No clothing items available for this weather.</p>
+          )}
+        </ul>
+      </section>
     </main>
   );
 }

@@ -1,89 +1,107 @@
+import { baseUrl } from "./constants";
 
-const baseUrl = "http://localhost:3001";
 
-// Helper function to handle response
-export const checkRes = (res) => {
-  if (!res.ok) {
-    return res.json().then((data) => {
-      throw new Error(data.message || `Error: ${res.status}`);
-    });
-  }
-  return res.json();
-};
 
-// Helper function to include token in headers
-function getHeadersWithAuth(token) {
-  return {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  };
+function checkResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
-// Fetch clothing items (unprotected)
-function getItems(weatherType) {
-  const query = weatherType ? `?weather_like=${weatherType}` : "";
-  return fetch(`${baseUrl}/items${query}`).then(checkRes);
+function request(url, options) {
+  return fetch(url, options).then(checkResponse);
 }
 
-// Add a new clothing item (protected)
-function postItem(item, token) {
-  return fetch(`${baseUrl}/items`, {
+function getItems() {
+  return request(`${baseUrl}/items`);
+}
+
+const addItem = ({ name, weather, imageUrl }) => {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, // Ensure token is included
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-    body: JSON.stringify(item),
-  }).then(checkRes);
-}
-
-// Delete a clothing item (protected)
-function deleteItem(itemId, token) {
-  console.log(`Deleting item with _id: ${itemId}`); // Debug log
-  return fetch(`${baseUrl}/items/${itemId}`, {
-    method: "DELETE",
-    headers: getHeadersWithAuth(token),
-  }).then(checkRes);
-}
-
-// Fetch user data (protected)
-function getUserData(token) {
-  return fetch(`${baseUrl}/users/me`, {
-    method: "GET",
-    headers: getHeadersWithAuth(token),
-  }).then(checkRes);
-}
-
-// Update user profile (protected)
-export const updateUser = (userData, token) => {
-  return fetch(`${baseUrl}/users/me`, {
-    method: "PATCH",
-    headers: getHeadersWithAuth(token),
-    body: JSON.stringify(userData),
-  }).then(checkRes);
+    body: JSON.stringify({
+      name,
+      weather,
+      imageUrl,
+    }),
+  });
 };
 
-// Add a like to an item
-export const addCardLike = (id, token) => {
+const removeItem = (_id) => {
+  const token = localStorage.getItem("jwt");
+  console.log("Deleting item with _id:", _id);
+  return request(`${baseUrl}/items/${_id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+const updateUserData = (username, avatar) => {
+  console.log("Updating user data:", username, avatar);
+  const token = localStorage.getItem("jwt");
+  if (!token) {
+    console.error("JWT token is missing or invalid.");
+    return;
+  }
+
+  if (!username || !avatar) {
+    console.error("Invalid input: Username or avatar URL is missing or empty.");
+    return;
+  }
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name: username, avatar: avatar || "" }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Failed to update user data.");
+      }
+      return res.json();
+    })
+
+    .catch((error) => console.error(error.message));
+};
+
+const addCardLike = (id, token) => {
+  console.log("Card ID:", id);
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
-  }).then(checkRes);
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 };
 
-// Remove a like from an item
-export const removeCardLike = (id, token) => {
+const removeCardLike = (id, token) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
-  }).then(checkRes);
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 };
 
-// Export all other functions
-export { getItems, postItem, deleteItem, getUserData };
+export {
+  getItems,
+  addItem,
+  removeItem,
+  addCardLike,
+  updateUserData,
+  removeCardLike,
+  checkResponse,
+};

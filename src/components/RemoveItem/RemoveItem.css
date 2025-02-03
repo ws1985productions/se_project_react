@@ -1,0 +1,58 @@
+.modal .modal__remove-item {
+  justify-content: center;
+  width: 670px !important;
+  padding: 60px 151px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__content .modal__content-remove {
+  width: 100%;
+  max-width: 670px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.remove__text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.remove__font {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.removeItem__buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.removeItem__button {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ff4d00;
+  border: none;
+  background-color: none;
+  background-color: white;
+  margin-bottom: 24px;
+  margin-top: 40px;
+}
+
+.removeItem__cancel {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  border: none;
+  background-color: none;
+  background-color: white;
+}

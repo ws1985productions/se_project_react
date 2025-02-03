@@ -1,10 +1,40 @@
-.app {
-    background-color: #f3f3f3;
-    padding: 20px;
-  }
-  
-  .app__content {
-    max-width: 1360px;
-    margin: 0 auto;
-    padding: 0 40px;
-  }
+* {
+  box-sizing: border-box;
+}
+
+body,
+div {
+  user-select: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+[contenteditable="true"] {
+  caret-color: transparent;
+}
+
+.page {
+  background-color: #f3f3f3;
+  font-family: "CabinetGrotesk", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 40px;
+  width: 100%;
+}
+
+.page__content {
+  max-width: 1440px;
+  flex-grow: 1;
+  overflow: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

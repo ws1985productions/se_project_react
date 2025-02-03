@@ -1,19 +1,7 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 32px 0 28px 0;
-  justify-content: space-between;
-  padding: 0 40px;
-}
-
-.header__container {
-  display: flex;
-  align-items: center;
-}
-
-.header__user {
-  display: flex;
-  flex-direction: row;
+  padding: 32px 0 28px;
 }
 
 .header__logo {
@@ -22,88 +10,43 @@
 
 .header__date-and-location {
   margin: 0;
-  font-family: "Cabinet Grotesk Bold";
-  font-size: 20px;
   font-weight: 700;
+  font-size: 20px;
   line-height: 24px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  white-space: nowrap;
+  color: black;
+}
+
+.header__controls {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 .header__add-clothes-btn {
-  margin: 0 20px 0 20px;
-  font-family: "Cabinet Grotesk Bold";
-  line-height: 24px;
+  margin: 0 20px 0 auto;
   font-weight: 700;
   font-size: 20px;
+  line-height: 24px;
+  color: black;
   border: none;
-  background: transparent;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .header__user-container {
   display: flex;
   align-items: center;
-  flex-direction: row;
-  gap: 12px;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 24px;
-  font-family: "Cabinet Grotesk Bold";
-}
-
-.header__switch {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header__username {
-  margin: 0;
-}
-
-.header__avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }
 
 .header__link {
   text-decoration: none;
-  color: black;
 }
 
-.header__avatar-placeholder {
-  padding: 0;
-  height: 40px;
-  width: 40px;
-  background-color: rgba(0, 0, 0, 20%);
-  border-color: rgba(0, 0, 0, 50%);
-  border-style: solid;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.header__userName {
+  margin: 0;
+  font-weight: 700;
   font-size: 20px;
-}
-
-.header__container-bar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-}
-
-.header__auth-btn {
-  background: none;
-  border: none;
+  line-height: 24px;
   color: black;
-  cursor: pointer;
-  padding: 0;
-  font-size: 16px;
-  font-family: "Cabinet Grotesk Bold";
-  margin-right: 20px;
+  margin-right: 12px;
 }

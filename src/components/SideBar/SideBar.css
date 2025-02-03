@@ -1,75 +1,60 @@
-.sidebar {
+.sideBar {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: flex-start; /* Align elements to the left */
+  flex-direction: column;
+  justify-content: left;
+  width: 100%;
 }
 
-.sidebar__avatar {
-  height: 56px;
+.sideBar__userInfo {
+  display: flex;
+  align-items: center;
+}
+
+.sideBar__avatar {
   width: 56px;
-  border-radius: 50%;
+  height: 56px;
 }
 
-.sidebar__user-info {
+.sideBar__editProfile {
   display: flex;
-  align-items: center; /* Align items horizontally */
-  gap: 12px; /* Add space between avatar and username */
-  margin-bottom: 2px; /* Add space below the user info section */
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.sidebar__username {
-  font-family: "Cabinet Grotexk Bold", sans-serif;
-  font-size: 20px;
+.sideBar__userName {
   font-weight: 700;
-  color: rgba(0, 0, 0, 1);
-  line-height: 25px;
+  font-size: 20px;
+  line-height: 24.8px;
+  margin-left: 16px;
 }
 
-.sidebar__avatar-placeholder {
-  height: 56px;
-  width: 56px;
-  background-color: rgba(0, 0, 0, 20%);
-  border-color: rgba(0, 0, 0, 50%);
-  border-style: solid;
-  border-radius: 50%;
+.sideBar__avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
+  border-radius: 50%;
+  top: -600px;
 }
 
-.sidebar__button {
-  font-family: "Cabinet Grotexk Regular", sans-serif;
+.sideBar__changeUserData {
+  font-weight: 700;
   font-size: 20px;
-  font-weight: 400;
-  padding: 8px 16px;
-  width: 100%;
+  line-height: 24.8px;
   border: none;
-  border-radius: 4px;
+  margin-top: 24px;
   cursor: pointer;
-  background-color: transparent; /* Remove background color */
-  color: rgba(0, 0, 0, 1); /* Set text color to black */
-  line-height: 24px;
 }
 
-.sidebar__button-edit {
-  /* Remove background color and set text color */
-  background-color: transparent;
-  color: rgba(0, 0, 0, 1);
-}
-
-.sidebar__button-logout {
-  /* Remove background color and set text color */
-  background-color: transparent;
-  color: rgba(0, 0, 0, 1);
-  text-align: left;
-}
-
-.sidebar__button:hover {
-  opacity: 0.9;
-}
-
-.sidebar__button:active {
-  transform: scale(0.98);
+.sideBar__logout {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.8px;
+  border: none;
+  margin-top: 8px;
+  cursor: pointer;
 }

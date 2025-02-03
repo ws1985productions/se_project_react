@@ -1,56 +1,66 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./LoginModal.css";
+import { useForm } from "../../hooks/useForm";
 
 const LoginModal = ({
+  activeModal,
   closeActiveModal,
-  onLogin,
-  isOpen,
-  openRegisterModal,
+  buttonText = "Login",
+  handleLogin,
+  setActiveModal,
+  modalRef,
 }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { values, handleChange } = useForm({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ email, password });
+    console.log("Form submitted with values:", values);
+    handleLogin({
+      username: values.email,
+      password: values.password,
+    });
   };
 
   return (
     <ModalWithForm
-      title="Sign In"
-      buttonText="Login"
-      isOpen={isOpen}
-      onClose={closeActiveModal}
+      isOpen={activeModal === "login"}
+      title="Login"
+      buttonText={buttonText}
+      secondaryButtonText="or Sign up"
+      onSecondaryClick={() => setActiveModal("register")}
+      activeModal={activeModal}
       onSubmit={handleSubmit}
+      modalRef={modalRef}
+      closeActiveModal={closeActiveModal}
     >
-      <label className="modal__label">
+      <label htmlFor="email" className="modal__label">
         Email
         <input
           type="email"
           className="modal__input"
-          placeholder="Your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          id="email"
+          name="email"
+          placeholder="Email"
+          value={values.email}
+          onChange={handleChange}
         />
       </label>
-      <label className="modal__label">
+
+      <label htmlFor="password" className="modal__label">
         Password
         <input
           type="password"
           className="modal__input"
-          placeholder="Your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          id="password"
+          name="password"
+          placeholder="Password"
+          value={values.password}
+          onChange={handleChange}
         />
       </label>
-      <button
-        type="button"
-        onClick={openRegisterModal}
-        className="modal__secondary-button"
-      >
-        or sign up
-      </button>
     </ModalWithForm>
   );
 };

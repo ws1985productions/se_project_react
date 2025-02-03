@@ -1,67 +1,82 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useForm } from "../../hooks/useForm";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const EditProfileModal = ({ onClose, updateUser, activeModal }) => {
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
 
-  // Access current user data from context
-  const currentUser = useContext(CurrentUserContext);
+const EditProfileModal = ({
+  isOpen,
+  closeActiveModal,
+  activeModal,
+  buttonText,  
+  setCurrentUser,
+  modalRef,
+  updateUserSubmit,
+}) => {
+  const { values, handleChange, setValues } = useForm({
+    username: "",
+    avatar: "",
+  });
 
-  // Handle input changes
-  const handleNameChange = (e) => setName(e.target.value);
-  const handleAvatarChange = (e) => setAvatar(e.target.value);
+  const { currentUser } = useContext(CurrentUserContext);
 
-  const isOpen = activeModal === "edit-profile";
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name.trim() || !avatar.trim()) {
-      alert("Please provide valid name and avatar URL.");
-      return;
-    }
-    updateUser({ name, avatar });
+
+    updateUserSubmit(
+      values.username,
+      values.avatar,
+      setCurrentUser,
+      closeActiveModal
+    );
   };
 
-  // Pre-fill form with current user data when modal opens
   useEffect(() => {
     if (isOpen && currentUser) {
-      setName(currentUser.name || "");
-      setAvatar(currentUser.avatar || "");
+      console.log("Current User:", currentUser);
+      setValues({
+        username: currentUser?.name,
+        avatar: currentUser?.avatar,
+      });
     }
   }, [isOpen, currentUser]);
 
   return (
     <ModalWithForm
+      isOpen={activeModal === "Edit-profile"}
       title="Edit Profile"
-      buttonText="Save Changes"
-      isOpen={isOpen}
-      onClose={onClose}
+      buttonText={buttonText}
+      activeModal={activeModal}
+      closeActiveModal={closeActiveModal}
       onSubmit={handleSubmit}
+      customClass="edit-profile-modal"
+      modalRef={modalRef}
     >
-      <label className="modal__label" htmlFor="edit-name">
+      <label  className="modal__label">
         Name
         <input
           type="text"
+          id="username"
+          name="username"
+          placeholder={currentUser?.name}
+          value={values.username}
+          onChange={handleChange}
           className="modal__input"
-          id="edit-name"
-          name="editName"
-          value={name}
-          onChange={handleNameChange}
-          required
         />
       </label>
-      <label className="modal__label" htmlFor="avatar">
-        Avatar URL
+
+      <label  className="modal__label">
+        Avatar
         <input
-          type="url"
-          className="modal__input"
-          id="edit-avatar"
+          type="text"
+          id="avatar"
           name="avatar"
-          value={avatar}
-          onChange={handleAvatarChange}
+          placeholder={currentUser?.avatar}
+          value={values.avatar}
+          onChange={handleChange}
+          className="modal__input"
         />
       </label>
     </ModalWithForm>

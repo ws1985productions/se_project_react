@@ -1,41 +1,35 @@
-.clothes-section__title-button {
-  all: unset;
+.clothesSection {
+  box-sizing: border-box;
+  margin-left: 116px;
+}
+.clothesSection__controls {
   display: flex;
-  flex-direction: row; /* Align children in a row */
-  align-items: center; /* Vertically align items */
-  justify-content: flex-start;
-  gap: 20px; /* Add spacing between the header and button */
-  margin-bottom: 16px;
+  margin: 0 auto;
 }
 
-.clothes-section__header {
-  font-family: "Cabinet Grotesk Bold";
-  font-size: 20px;
-  font-weight: 700;
-  width: 94px;
-  height: 25px;
-  color: rgba(0, 0, 0, 1);
+.clothesSection__items {
   margin: 0;
+  font-weight: 700;
+  line-height: 24.8px;
+  font-size: 20px;
+  margin-right: 20px;
 }
 
-.clothes-section__button {
-  font-family: "Cabinet Grotesk Bold";
-  font-size: 20px;
-  font-weight: 700;
-  width: 88px;
-  height: 25px;
-  color: rgba(0, 0, 0, 0.6);
-  background: none;
+.clothesSection__btn {
   border: none;
-  padding: 0;
-  margin-left: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
 }
 
-.clothes-section__items {
-  display: flex;
-  flex-wrap: wrap;
+.clothesSection__lists .cards__list {
   margin: 0;
-  padding: 0;
-  list-style-type: none;
-  gap: 21px;
+}
+
+.clothesSection__lists {
+  width: 100%;
+  margin-top: 16px;
+  gap: 20px;
 }
