@@ -1,4 +1,4 @@
-import { weatherOptions } from "../../utils/constants";
+import { weatherOptions, } from "../../utils/constants";
 import "./WeatherCard.css";
 
 function WeatherCard({
