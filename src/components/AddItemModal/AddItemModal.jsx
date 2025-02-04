@@ -24,7 +24,7 @@ const AddItemModal = ({
   return (
     <ModalWithForm
       isOpen={activeModal === "add-garment"}
-      title="Sign up"
+      title="New Garment"
       buttonText={buttonText}
       activeModal={activeModal}
       closeActiveModal={closeActiveModal}

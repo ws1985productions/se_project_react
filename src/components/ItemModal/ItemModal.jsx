@@ -1,54 +1,51 @@
-import "../RemoveItem/RemoveItem";
-import close from "../../assets/closeBtn.svg";
-import useEscapeKey from "../../hooks/useEscapeKey";
+import "./ItemModal.css";
+import close from "../../assets/close_button.svg";
 import { useRef } from "react";
+import useEscapeKey from "../../hooks/useEscapeKey";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const RemoveItem = ({ activeModal, onClose, onConfirm, buttonText }) => {
+function ItemModal({ activeModal, onClose, card, handleDeleteClick }) {
   const modalRef = useRef(null);
   const closeActiveModal = () => {
     onClose();
   };
-  useEscapeKey(!!activeModal, closeActiveModal, modalRef);
+  const { currentUser } = useContext(CurrentUserContext);
 
+  const isOwn = card?.owner === currentUser?._id;
+
+  useEscapeKey(!!activeModal, closeActiveModal, modalRef);
   return (
     <div
-      className={`modal modal__remove-item ${
-        activeModal === "remove-item" && "modal_opened"
-      }`}
+      className={`modal ${activeModal === "preview" && "modal_opened"}`}
       ref={modalRef}
     >
-      <div className="modal__content modal__content-remove">
+      <div className="modal__content modal__content_type_image">
         <button onClick={onClose} type="button" className="modal__close">
           <img src={close} alt="close_button" />
         </button>
-        <div className="remove__text-container">
-          <p className="remove__font">
-            Are you sure you want to delete this item?
-          </p>
-          <p className="remove__font">This action is irreversible.</p>
-        </div>
-        <div className="removeItem__buttons">
-          <button
-            onClick={() => {
-              console.log("Delete confirmed");
-              onConfirm();
-            }}
-            type="button"
-            className="removeItem__button"
-          >
-            {buttonText}
-          </button>
-          <button
-            onClick={onClose}
-            type="button"
-            className="removeItem__cancel"
-          >
-            Cancel
-          </button>
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
+
+        <div className="modal__footer">
+          <section className="modal__footer-section">
+            <h2 className="modal__caption">{card.name}</h2>
+            <p className="modal__weather">Weather: {card.weather}</p>
+          </section>
+          <section>
+            {isOwn && (
+              <button
+                onClick={() => handleDeleteClick(card)}
+                type="button"
+                className="modal__delete"
+              >
+                Delete item
+              </button>
+            )}
+          </section>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default RemoveItem;
+export default ItemModal;

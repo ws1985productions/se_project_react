@@ -1,31 +1,39 @@
-import "./DeleteConfirmModal.css";
+import "./ConfirmDeleteModal.css";
+import closeBtn from "../../assets/closeBtn.svg";
 
-function DeleteConfirmModal({ activeModal, onClose, onDelete }) {
+function ConfirmDeleteModal({
+  item,
+  activeModal,
+  handleDeleteItem,
+  closeActiveModal,
+}) {
+  const deleteCard = () => {
+    handleDeleteItem(item);
+  };
+
   return (
-    <div
-      className={`modal ${activeModal === "delete-item" ? "modal_opened" : ""}`}
-    >
-      <div className="delete-modal__content">
-        <button
-          className="modal__close"
-          type="button"
-          onClick={onClose}
-        ></button>
-        <p className="delete-modal__heading">
-          Are you sure you want to delete this item? This action is
-          irreversible.
+    <div className={`modal  ${activeModal && "modal_opened"}`}>
+      <div className="modal__container modal__content_type_delete">
+        <button className="modal__close" type="button">
+          <img
+            src={closeBtn}
+            alt="close-button"
+            className="modal__close-btn"
+            onClick={closeActiveModal}
+          />
+        </button>
+        <p className="modal__delete_question">
+          Are you sure you want to delete this item?
+          <br /> This action is irreversible.
         </p>
-        <button
-          type="button"
-          className="delete-modal__confirm"
-          onClick={onDelete}
-        >
+
+        <button type="submit" className="modal__confirm" onClick={deleteCard}>
           Yes, delete item
         </button>
         <button
-          className="delete-modal__cancel"
-          onClick={onClose}
           type="button"
+          className="modal__cancel"
+          onClick={closeActiveModal}
         >
           Cancel
         </button>
@@ -34,4 +42,4 @@ function DeleteConfirmModal({ activeModal, onClose, onDelete }) {
   );
 }
 
-export default DeleteConfirmModal;
+export default ConfirmDeleteModal;

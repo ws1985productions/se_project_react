@@ -1,13 +1,13 @@
 .profile {
   display: flex;
-  gap: 114px;
-  flex-direction: row;
+  max-width: 1440px;
+  box-sizing: border-box;
 }
 
-.profile__sidebar { 
-  width: 1016px;
+.profile__sideBar {
+  width: 20%;
 }
 
 .profile__clothing-items {
-  width: 1016px;
+  width: 80%;
 }
