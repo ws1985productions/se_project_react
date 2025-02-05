@@ -1,10 +1,15 @@
-.app {
-    background-color: #f3f3f3;
-    padding: 20px;
-  }
-  
-  .app__content {
-    max-width: 1360px;
-    margin: 0 auto;
-    padding: 0 40px;
-  }
+.page {
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
+  font-family: "Cabinet Grotesk";
+  padding: 0 20px;
+  font-size: 20px;
+}

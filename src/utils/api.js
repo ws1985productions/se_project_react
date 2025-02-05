@@ -59,7 +59,7 @@ const updateUserData = (username, avatar) => {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name: username, avatar: avatar || "" }),
-  }).then(checkRes);
+  }).then(checkResponse);
 };
 
 const addCardLike = (id, token) => {
@@ -71,7 +71,7 @@ const addCardLike = (id, token) => {
       "Content-Type": "application/json",
     },
   })
-  .then((res) => res.json())
+  .then(checkResponse);
 };
 
 const removeCardLike = (id, token) => {
@@ -82,7 +82,7 @@ const removeCardLike = (id, token) => {
       "Content-Type": "application/json",
     },
   })
-    .then((res) => res.json())
+  .then(checkResponse);
     
 };
 
@@ -94,5 +94,4 @@ export {
   updateUserData,
   removeCardLike,
   checkResponse,
-  
 };
