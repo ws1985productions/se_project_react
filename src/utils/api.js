@@ -1,7 +1,6 @@
 import { baseUrl } from "./constants";
 
 
-
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
@@ -60,15 +59,7 @@ const updateUserData = (username, avatar) => {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name: username, avatar: avatar || "" }),
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("Failed to update user data.");
-      }
-      return res.json();
-    })
-
-    .catch((error) => console.error(error.message));
+  }).then(checkRes);
 };
 
 const addCardLike = (id, token) => {
@@ -80,8 +71,7 @@ const addCardLike = (id, token) => {
       "Content-Type": "application/json",
     },
   })
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
+  .then((res) => res.json())
 };
 
 const removeCardLike = (id, token) => {
@@ -93,7 +83,7 @@ const removeCardLike = (id, token) => {
     },
   })
     .then((res) => res.json())
-    .catch((err) => console.log(err));
+    
 };
 
 export {
@@ -104,4 +94,5 @@ export {
   updateUserData,
   removeCardLike,
   checkResponse,
+  
 };

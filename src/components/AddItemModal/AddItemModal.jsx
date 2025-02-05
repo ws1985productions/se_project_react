@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
-
 const AddItemModal = ({
   activeModal,
   closeActiveModal,
@@ -14,13 +13,11 @@ const AddItemModal = ({
     imageUrl: "",
     weather: "",
   });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted with values:", values);
     handleAddItemSubmit(values);
   };
-
   return (
     <ModalWithForm
       isOpen={activeModal === "add-garment"}
@@ -43,7 +40,6 @@ const AddItemModal = ({
           onChange={handleChange}
         />
       </label>
-
       <label htmlFor="ImageUrl" className="modal__label">
         Image
         <input
@@ -56,10 +52,8 @@ const AddItemModal = ({
           onChange={handleChange}
         />
       </label>
-
       <fieldset className="modal__radio-btns">
         <legend className="modal__legend">Select the weather type:</legend>
-
         <div>
           <input
             id="hot"
@@ -74,7 +68,6 @@ const AddItemModal = ({
             Hot
           </label>
         </div>
-
         <div>
           <input
             id="warm"
@@ -92,7 +85,6 @@ const AddItemModal = ({
             Warm
           </label>
         </div>
-
         <div>
           <input
             id="cold"
@@ -114,5 +106,4 @@ const AddItemModal = ({
     </ModalWithForm>
   );
 };
-
 export default AddItemModal;

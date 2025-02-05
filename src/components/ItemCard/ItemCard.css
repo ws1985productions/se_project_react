@@ -1,51 +1,64 @@
 .card {
-  width: 325px;
-  height: 328px;
+  width: 323px;
+  height: 326px;
+  border-radius: 12px;
+  border-color: rgba(0, 0, 0, 0.3);
   position: relative;
   display: flex;
   justify-content: center;
-  flex-direction: column; /* Add this line to stack elements vertically */
+  align-items: center;
 }
-
-.card__info {
+.card__content {
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
-  position: absolute;
-  top: 18px;
+  gap: 4px;
+  top: 10px;
   width: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
 }
 
 .card__name {
+  top: 15px;
   margin: 0;
-  font-family: "Cabinet Grotesk Bold";
-  background-color: rgba(255, 255, 255, 1);
-  color: rgba(0, 0, 0, 0.6);
-  border-radius: 4px;
+  width: 73px;
+  height: 24px;
+  background-color: #ffffff;
   font-weight: 700;
-  line-height: 20px;
   font-size: 16px;
-  padding: 2px 12px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
 }
 
 .card__image {
+  width: 325px;
+  height: 328px;
   width: 100%;
-  height: 100%;
-  border-radius: 19px;
-  border: solid rgba(0, 0, 0, 0.3) 1px;
+  height: 100%;  
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-.card__like-button {
+.card__like-btn {
   background-image: url("../../assets/ClearLike.svg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;  
+  background-color: transparent;
   width: 18px;
   height: 15px;
   border: none;
   cursor: pointer;
-  margin-left: 8px; /* Add some space between the name and the button */
+  top: 15px;
+  margin-left: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.card__like-button_liked {
+.card__like-btn.liked {
   background-image: url("../../assets/FilledLike.svg");
 }

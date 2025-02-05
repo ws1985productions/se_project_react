@@ -1,14 +1,9 @@
+import { checkResponse } from "./api";
 
 export const getWeather = ({latitude, longitude}, APIkey) => {
   return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`)
-   .then((res) => {
-       if (res) {
-           return res.json();
-       } else {
-           return Promise.reject(`Error: ${res.status}`);
-       }
-   });
-}
+   .then(checkResponse);
+};
 
 const toCelsius = (temp) => {
    const cel = Math.round((temp - 32) * 5/9);

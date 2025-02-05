@@ -1,35 +1,41 @@
-.clothesSection {
-  box-sizing: border-box;
-  margin-left: 116px;
-}
-.clothesSection__controls {
+.clothes-section__title-button {
+  all: unset;
   display: flex;
-  margin: 0 auto;
+  flex-direction: row; /* Align children in a row */
+  align-items: center; /* Vertically align items */
+  justify-content: flex-start;
+  gap: 20px; /* Add spacing between the header and button */
+  margin-bottom: 16px;
 }
 
-.clothesSection__items {
+.clothes-section__header {
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  font-weight: 700;
+  width: 94px;
+  height: 25px;
+  color: rgba(0, 0, 0, 1);
   margin: 0;
-  font-weight: 700;
-  line-height: 24.8px;
-  font-size: 20px;
-  margin-right: 20px;
 }
 
-.clothesSection__btn {
-  border: none;
-  font-weight: 700;
-  line-height: 24.8px;
+.clothes-section__button {
+  font-family: "Cabinet Grotesk Bold";
   font-size: 20px;
+  font-weight: 700;
+  width: 88px;
+  height: 25px;
   color: rgba(0, 0, 0, 0.6);
-  margin: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 20px;
 }
 
-.clothesSection__lists .cards__list {
+.clothes-section__items {
+  display: flex;
+  flex-wrap: wrap;
   margin: 0;
-}
-
-.clothesSection__lists {
-  width: 100%;
-  margin-top: 16px;
-  gap: 20px;
+  padding: 0;
+  list-style-type: none;
+  gap: 21px;
 }

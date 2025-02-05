@@ -18,7 +18,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { setToken, getToken, removeToken } from "../../utils/token";
 import {
   getItems,
-  addItem,
+  //addItem,
   updateUserData,
   addCardLike,
   removeCardLike,

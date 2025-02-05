@@ -1,0 +1,21 @@
+.modal__secondary-button {
+  position: absolute;
+  bottom: 43px;
+  left: 160px;
+  background: none;
+  border: none;
+  color: #030507;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 8px;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Cabinet Grotesk Bold";
+  color: #00000080;
+  opacity: 50%;
+}
+
+.modal__secondary-button:hover {
+  text-decoration: none;
+  color: #030406;
+}
