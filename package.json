@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ws1985productions.github.io/se_project_react/",
+  "homepage": "http://wtwr.idevelopment.ch/",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
