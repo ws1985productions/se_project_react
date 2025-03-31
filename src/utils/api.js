@@ -1,5 +1,8 @@
-import { baseUrl } from "./constants";
+const baseUrl = process.env.NODE_ENV === "production" 
+  ? "https://api.wtwr.idevelopment.ch"
+  : "http://localhost:3001";
 
+import { getToken } from "./auth";
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -94,4 +97,5 @@ export {
   updateUserData,
   removeCardLike,
   checkResponse,
+  getToken,
 };
