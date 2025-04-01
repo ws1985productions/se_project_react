@@ -10,7 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "npm run build && scp -r ./dist/* williesinclair@wtwr.idevelopment.ch:/home/williesinclair/frontend",
     "json": "json-server --watch db.json --id _id --port 3001"
   },
   "dependencies": {
