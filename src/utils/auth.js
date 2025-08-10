@@ -31,3 +31,6 @@ export const getUserInfo = (token) => {
     },
   }).then(checkResponse);
 };
+const baseUrl = process.env.NODE_ENV === "production" 
+  ? "https://api.wtwr.idevelopment.ch"
+  : "http://localhost:3001";
