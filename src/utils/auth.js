@@ -1,3 +1,7 @@
+const baseUrl = process.env.NODE_ENV === "production" 
+  ? "https://api.wtwr.idevelopment.ch"
+  : "http://localhost:3001";
+  
 import { checkResponse } from "./api";
 export const register = (name, avatar, email, password) => {
   return fetch(`${baseUrl}/signup`, {
@@ -31,6 +35,4 @@ export const getUserInfo = (token) => {
     },
   }).then(checkResponse);
 };
-const baseUrl = process.env.NODE_ENV === "production" 
-  ? "https://api.wtwr.idevelopment.ch"
-  : "http://localhost:3001";
+
